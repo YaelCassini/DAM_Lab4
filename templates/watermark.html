@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Digital Watermark</title>
+<style>
+/* 让页面所有元素的padding和margin都设置为0 */ 
+*{margin:0;padding:0;box-sizing:border-box;}
+/* 设置背景图，字体设置为微软雅黑 */ 
+body{
+    background-color:#cbf1e8;
+    /* background:url(bg.jpg); */
+    font-family: "微软雅黑", sans-serif;}
+.pic{
+    position: fixed;
+    height:45%;
+    width:40%;
+    top:10%;
+    left:15%;
+    float:left;
+
+}    
+.mark{
+    position: fixed;
+    height:40%;
+    width:40%;
+    top:55%;
+    left:15%;
+    float:left;
+}
+.marked{
+    position: fixed;
+    height:40%;
+    width:40%;
+    top:10%;
+    right:15%;
+    float:left;
+}
+.decode{
+    position: fixed;
+    height:40%;
+    width:40%;
+    top:55%;
+    right:15%;
+    float:left;
+}
+img{
+    position: absolute;
+    height:400px;
+    width:400px;
+    left:30%;
+}
+/* 标题及返回栏的css，头部居中 */ 
+.login { 
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    margin: -150px 0 0 -150px;
+    width:80%;
+    height:200px;
+}
+/* 前面分析过的h1标签的css，text-shadow设置阴影使文字更好看，letter-spacing设置字符间距 */ 
+h1 { color:#555555; text-shadow: 0px 10px 8px #CDC673; letter-spacing:2px;text-align:center;margin-bottom:20px; }
+
+/* 按钮的css，cursor:pointer当鼠标移到按钮上面时变成小手形状 */
+form button{
+    position: absolute;
+    width:20%;
+    padding:10px;
+    background-color:#dff1c2;
+    border:1px solid black;
+    border-radius:4px;
+    cursor:pointer; 
+    float:left;
+    top:2%;
+    left:60%;
+    font-size:20px;
+}                                                                                                                                                  
+</style>
+</head>
+<body>
+    <h1>载入水印</h1>
+    <form  enctype='multipart/form-data' method="post" action="{{ url_for('home') }}">
+    <button type="submit">返回首页</button>
+    </form>
+    <div class="pic">
+        <h1>载体图像：</h1> 
+        <img src="{{pic_addr}}">
+    </div>
+    <div class="mark">
+        <h1>水印图像：</h1>
+        <img src="{{mark_addr}}">    
+    </div>
+    <div class="marked">
+        <h1>嵌入水印后的图像：</h1>
+        <img src="{{marked_addr}}">    
+    </div>
+    <div class="decode">
+        <h1>从图像中提取出的水印：</h1>
+        <img src="{{decode_addr}}">    
+    </div>
+
+</body>
+</html>
